@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>七巧板</title>
+	<style type="text/css">
+		canvas{
+			margin-left:500px;
+
+		}
+	</style>
+</head>
+<body>
+	<canvas width="800" height="800" id="canvas"></canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	var trangram = [
+		{p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#66bdcf"},
+		{p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#cefe68"},
+		{p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#f13c64"},
+		{p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#f7ca28"},
+		{p:[{x:400,y:800},{x:0,y:800},{x:200,y:600}],color:"#f78ece"},
+		{p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"#a795c3"},
+		{p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#faf61c"}
+	]
+	;
+	for(var i=0;i<trangram.length;i++){
+		draw(trangram[i],ctx);
+	}
+	function draw(piece,ctx){
+		ctx.beginPath();
+		for(var i=0;i<piece.p.length;i++){
+			ctx.lineTo(piece.p[i].x,piece.p[i].y);
+			ctx.fillStyle=piece.color;
+		}
+		ctx.closePath();
+		ctx.strokeSyle="#000";
+		ctx.fill();
+		ctx.stroke();
+	}
+</script>
+</html>
